@@ -15,7 +15,15 @@ class _HomeScreenState extends State<HomeScreen> {
   bool _isAnalog = false;
   bool _isStrap = false;
   bool _isDigital = false;
+  String selectedImage = '';
   DateTime dateTime = DateTime.now();
+
+  List<String> background = [
+    'https://images.unsplash.com/photo-1550895030-823330fc2551?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGJhY2tncm91bmQlMjB0ZXh0dXJlfGVufDB8fDB8fHww',
+    'https://images.unsplash.com/photo-1550895030-823330fc2551?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGJhY2tncm91bmQlMjB0ZXh0dXJlfGVufDB8fDB8fHww',
+    'https://images.unsplash.com/photo-1550895030-823330fc2551?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGJhY2tncm91bmQlMjB0ZXh0dXJlfGVufDB8fDB8fHww',
+    //  'https://images.unsplash.com/photo-1517384084767-6bc118943770?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nzh8fGJhY2tncm91bmQlMjB0ZXh0dXJlfGVufDB8fDB8fHww'
+  ];
 
   void startClock() {
     Timer.periodic(const Duration(seconds: 1), (timer) {
@@ -26,12 +34,12 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   @override
-  void initState() {
-    startClock();
-    print(dateTime);
-    print(dateTime);
-    super.initState();
-  }
+  // void initState() {
+  //   startClock();
+  //   print(dateTime);
+  //   print(dateTime);
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -117,6 +125,53 @@ class _HomeScreenState extends State<HomeScreen> {
                         () => _isAnalog = !_isAnalog,
                       ),
                     ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    const Text(
+                      'Choose Wallpaper',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16,
+                        color: Colors.black54,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    SizedBox(
+                      height: 100,
+                      width: 250,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: background.length,
+                        itemBuilder: (context, index) {
+                          final String image = background[index];
+                          return Row(
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    selectedImage = image;
+                                  });
+                                },
+                                child: Container(
+                                  height: 110,
+                                  width: 100,
+                                  margin: const EdgeInsets.only(right: 20),
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                      image: NetworkImage(image),
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          );
+                        },
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -125,6 +180,12 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Container(
         height: size.height,
         width: size.width,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: NetworkImage(selectedImage),
+            fit: BoxFit.cover,
+          ),
+        ),
         padding: const EdgeInsets.symmetric(horizontal: 20),
         alignment: Alignment.center,
         child: SizedBox(
