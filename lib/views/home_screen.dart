@@ -20,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List<Color> background = [
     Colors.lightBlue.shade600,
-    Colors.lime.shade600,
+    const Color.fromARGB(255, 76, 70, 55),
     Colors.lightGreen.shade600,
   ];
 
@@ -33,12 +33,12 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   @override
-  // void initState() {
-  //   startClock();
-  //   print(dateTime);
-  //   print(dateTime);
-  //   super.initState();
-  // }
+  void initState() {
+    startClock();
+    print(dateTime);
+    print(dateTime);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -144,9 +144,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     color: Colors.black54,
                   ),
                 ),
-                const SizedBox(
-                  height: 16,
-                ),
+                // const SizedBox(
+                //   height: 10,
+                // ),
                 SizedBox(
                   height: 100,
                   width: 250,
@@ -309,7 +309,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       TextSpan(
                         style: const TextStyle(
                           fontWeight: FontWeight.w800,
-                          fontSize: 28,
+                          fontSize: 50,
                           color: Colors.black,
                         ),
                         children: [
