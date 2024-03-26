@@ -26,17 +26,18 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void startClock() {
     Timer.periodic(const Duration(seconds: 1), (timer) {
-      dateTime = DateTime.now();
-      setState(() {});
-      startClock();
+      setState(() {
+        dateTime = DateTime.now();
+      });
+      // startClock();
     });
   }
 
   @override
   void initState() {
     startClock();
-    print(dateTime);
-    print(dateTime);
+    // print(dateTime);
+    // print(dateTime);
     super.initState();
   }
 
