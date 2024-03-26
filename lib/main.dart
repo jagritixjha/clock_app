@@ -1,5 +1,4 @@
 import 'package:clock_app/views/clock_screen_with_ui.dart';
-import 'package:clock_app/views/simple_clock_home_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,7 +12,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Clock App',
-      home: HomeScreen(),
+      home: ClockScreen(),
     );
   }
 }
