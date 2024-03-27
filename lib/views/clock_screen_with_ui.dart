@@ -1,7 +1,10 @@
 import 'dart:async';
 import 'dart:math';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 
 class ClockScreen extends StatefulWidget {
@@ -255,15 +258,45 @@ class _ClockScreenState extends State<ClockScreen> {
               color: const Color(0xC5000000),
               weight: FontWeight.w500,
             ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: textwidget(
-                title: 'Select Your State',
-                size: 14,
-                color: Colors.purple.shade200,
-                weight: FontWeight.w600,
-              ),
+            textwidget(
+              title: 'Select Your State',
+              size: 14,
+              color: Colors.purple.shade200,
+              weight: FontWeight.w600,
             ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: Container(
+        width: size.width,
+        height: 80,
+        // color: const Color.fromARGB(255, 163, 100, 100),
+        decoration: const BoxDecoration(
+          // border: Border(top: BorderSide(color: Colors.black12)),
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color.fromARGB(255, 245, 245, 254),
+              Color.fromARGB(255, 253, 253, 255),
+            ],
+          ),
+        ),
+        child: Row(
+          children: [
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                // alignment: Alignment.bottomCenter,
+                backgroundColor: Colors.transparent,
+              ),
+              label: const Text('Location'),
+              onPressed: () {},
+              icon: Icon(
+                Icons.location_on_rounded,
+                color: Colors.pink.shade600,
+                size: 34,
+              ),
+            )
           ],
         ),
       ),
